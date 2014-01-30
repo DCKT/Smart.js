@@ -1,4 +1,4 @@
-Clever.js
+Smart.js
 =========
 
-A clever Node.js web framework.
+A smart Node.js web framework.
