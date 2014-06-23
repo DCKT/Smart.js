@@ -4,4 +4,5 @@ var Smart = function() {
 	this.Router = new Router();
 };
 
-module.exports = Smart;
+
+module.exports = new Smart();
