@@ -4,6 +4,7 @@
 	"author": "Thomas Deconinck",
 	"description": "Ambitious Framework for Node.js",
 	"dependencies": {
-    	"handlebars": ">= 1.3.0"
+    	"handlebars": ">= 1.3.0",
+    	"node-sass": "*"
   	}
 }
