@@ -1,16 +1,18 @@
-var fs = require('fs'),
+var fs     = require('fs'),
 Handlebars = require('handlebars'),
-sass = require('node-sass');
+Assets     = require('./libs/assets.js'),
+sass       = require('node-sass');
 
 var Router = function() {
-	this.routes = [];
-	this.routes.push("/");
+	this.routes = ['/'];
 };
 
-Router.prototype.map = function(routes) {
-	for (route in routes) {
-		this.routes.push(routes[route]);
-	}
+Router.prototype.map = function() {
+	var _this = this;
+	
+	[].forEach.call(arguments, function (el) {
+		_this.routes.push(el);
+	});
 };
 
 Router.prototype.validRoute = function(route) {
@@ -28,49 +30,17 @@ Router.prototype.validRoute = function(route) {
 Router.prototype.manage = function(req, res) {
 	var method = req.method;
 	var urlRequested = req.url;
+	var assets = new Assets(res);
+	var path = '';
 
+	if (assets.check(urlRequested)) {
+		assets.getPath();
 
-	// Loading a JS or CSS library
-	var path = "";
-	var extension = false;
-	for (var i = 0; i < urlRequested.length; i++) {
-		if (urlRequested[i] == ".") {
-			extension = true;
-		}
-	};
-
-	if (extension) {
-		var extensionJS = urlRequested.slice(urlRequested.length - 3, urlRequested.length);
-		var extensionCSS = urlRequested.slice(urlRequested.length - 4, urlRequested.length);
-
-		path += "app/assets/";
-		path += extensionCSS == ".css" ? "stylesheets" : "";
-		path += extensionJS == ".js" ? "scripts" : "";
-
-		if (extensionCSS == ".png" || extensionCSS == ".jpg" || extensionCSS == ".ico") {
-			path += "images/";
-		}
-
-		if (extensionCSS == ".css") {
-			var point = urlRequested.indexOf(".") + 1;
-			path += [urlRequested.slice(0, point), "s", urlRequested.slice(point)].join('');;
-			sass.render({
-			    file: path,
-			    success: function(css){
-			        res.end(css);
-			    },
-			    error: function(error) {
-			        console.log(error);
-			    },
-			    outputStyle: 'compressed'
-			});
+		if (assets.isCSS()) {
+			assets.compileSASS();
 		}
 		else {
-			path += urlRequested;
-			fs.readFile(path, function(err, data) {
-				if (err) { console.log("ERROR LOADING FILE WITH " + urlRequested + " URL"); }
-		    	res.end(data);
-			});
+			assets.readImage();
 		}
 	}
 	else {
@@ -85,6 +55,10 @@ Router.prototype.manage = function(req, res) {
 
 		if (!validRoute) {
 			path += "app/views/global/404.html";
+			fs.readFile(path, function(err, data) {
+				if (err) { console.log(clc.red("ERROR LOADING FILE WITH " + _this.url + " URL")); }
+		    	res.end(data);
+			});
 		}
 		else {
 			var controllerPath = "./app/controllers";
@@ -101,12 +75,11 @@ Router.prototype.manage = function(req, res) {
 
 			controller.execute(function(data) {
 				var template = fs.readFileSync(path, "utf8");
-
-		        var pageBuilder = Handlebars.compile(template);
-		        var pageText = pageBuilder(data);
-		        res.writeHead(200, {"Context-Type": "text/html"});
-		        res.write(pageText);
-		        res.end();
+        var pageBuilder = Handlebars.compile(template);
+        var pageText = pageBuilder(data);
+        res.writeHead(200, {"Context-Type": "text/html"});
+        res.write(pageText);
+        res.end();
 			});
 
 		}

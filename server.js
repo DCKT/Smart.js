@@ -1,9 +1,9 @@
 var http = require('http'),
 Router = require('./router.js');
 
-var router = new Router;
+var router = new Router();
 
-router.map(["/hello"]);
+router.map("/hello");
 
 http.createServer(function(request, response) {
 	router.manage(request, response);
