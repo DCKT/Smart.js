@@ -1,6 +1,6 @@
 var fs     = require('fs'),
 Handlebars = require('handlebars'),
-Assets     = require('./libs/assets.js'),
+Assets     = require('./Assets'),
 sass       = require('node-sass');
 
 var Router = function() {
@@ -61,7 +61,7 @@ Router.prototype.manage = function(req, res) {
 			});
 		}
 		else {
-			var controllerPath = "./app/controllers";
+			var controllerPath = "../app/controllers";
 			controllerPath +=  urlRequested.length > 1 ? urlRequested : "/index";
 			controllerPath += ".js";
 

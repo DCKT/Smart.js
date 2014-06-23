@@ -1,12 +1,12 @@
 var http = require('http'),
-Router = require('./router.js');
+Smart    = require('./smart');
 
-var router = new Router();
+var App = new Smart();
 
-router.map("/hello");
+App.Router.map("/hello");
 
 http.createServer(function(request, response) {
-	router.manage(request, response);
+	App.Router.manage(request, response);
 }).listen(3000);
 
 console.log("Server launched on localhost:3000 ...");
