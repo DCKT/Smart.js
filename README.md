@@ -25,4 +25,21 @@ console.log("Server launched on localhost:3000 ...");
 
 Here, we create a route **/hello**, Smart will look in **./app/controllers/hello.js** and render **./app/views/hello.hbs**
 
+Actually, a controller looks like this :
+```javascript
+var HelloController = function(request, parameters) {
+	this.request = request;
+	this.parameters = parameters;
+}
+
+HelloController.prototype.execute = function (callback) {
+	callback();
+}
+
+
+module.exports = HelloController;
+```
+On the future, this should take less row to declare and use a controller.
+
+
 If we enter an inexistent URL, Smart will send a 404 error page (in **./app/views/global/404.hbs**).
