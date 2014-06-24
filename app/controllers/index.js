@@ -1,20 +1,11 @@
-var Controller = require('../../libs/Controller.js');
-IndexController.prototype = new Controller();
-IndexController.prototype.constructor = IndexController;
+var controller = require('../../lib/smart').Controller;
 
-function IndexController(request, parameters) {
-	this.request = request;
-	this.parameters = parameters;
-}
-
-IndexController.prototype.execute = function (callback) {
+controller.extend(function(req, res) {
 	var data = {
 		name: "DCK"
 	};
 
-	//this.getParameters();
+	this.send(name);
+});
 
-	callback(data);
-}
-
-module.exports = IndexController;
+module.exports = controller;

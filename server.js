@@ -1,5 +1,5 @@
 var http = require('http'),
-Smart    = require('./smart');
+Smart    = require('./lib/smart');
 
 var App = new Smart();
 
