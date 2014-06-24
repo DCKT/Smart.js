@@ -1,7 +1,7 @@
 var http = require('http'),
 Smart    = require('./lib/smart');
 
-Smart.Router.map("/hello");
+Smart.Router.map("/hello", "/posts/new");
 
 http.createServer(function(request, response) {
 	Smart.Router.manage(request, response);
