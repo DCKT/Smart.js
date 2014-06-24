@@ -28,20 +28,18 @@ Here, we create a route **/hello**, Smart will look in **./app/controllers/hello
 Actually, a controller looks like this :
 
 ```javascript
-var HelloController = function(request, parameters) {
-  this.request = request;
-  this.parameters = parameters;
-}
+var controller = require('../../lib/smart').Controller;
 
-HelloController.prototype.execute = function (callback) {
-  callback();
-}
+controller.extend(function(req, res) {
+	var data = {
+		name: "DCK"
+	};
 
+	res.send(data);
+});
 
-module.exports = HelloController;
+module.exports = controller;
 ```
-
-On the future, this should take less rows to declare and use a controller.
-
+The data passed with the **send** method only accept objects. ASAP you will be able to set a custom HTTP code and headers.
 
 If we enter a nonexistent URL, Smart will send a 404 error page (in **./app/views/global/404.hbs**).
