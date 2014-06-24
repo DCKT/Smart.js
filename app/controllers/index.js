@@ -5,7 +5,7 @@ controller.extend(function(req, res) {
 		name: "DCK"
 	};
 
-	this.send(name);
+	res.send(data);
 });
 
 module.exports = controller;
