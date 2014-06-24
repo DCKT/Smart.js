@@ -31,21 +31,27 @@ Notice, we not defined an index route, indeed, this is a common case for all web
 
 Actually, a controller looks like this :
 ```javascript
-var controller = require('../../lib/smart').Controller;
+module.exports = controller.extend(function(req, res) {
+	var name = req.query.name;
+	var data = {
+		name: name
+	};
 
-controller.extend(function(req, res) {
-  var data = {
-    name: "DCK"
-  };
-
-  res.send(data);
+	res.send(data);
 });
-
-module.exports = controller;
 ```
-The data passed with the **send** method only accept objects. ASAP you will be able to set a custom HTTP code and headers.
+The data passed with the **send** method only accept objects. 
+ASAP you will be able to set a custom HTTP code and headers.
 
-If we enter a nonexistent URL, Smart will send a 404 error page (in **./app/views/global/404.hbs**).
+#### GET parameters
+If the URL requested has some parameters, you can use **req.query** followed by the name of the parameters. Ex :
+```javascript
+// http://localhost:3000?name=DCK&id=1
+req.query.name; // 'DCK'
+req.query.id; // 1
+```
+
+If you enter a nonexistent URL, Smart will send a 404 error page (in **./app/views/global/404.hbs**).
 
 
 
