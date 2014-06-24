@@ -14,7 +14,7 @@ Actually, this is not a NPM package but it will be soon...
 var http = require('http'),
 Smart    = require('./smart');
 
-Smart.Router.map("/hello");
+Smart.Router.map("/hello", "/posts/new");
 
 http.createServer(function(request, response) {
   Smart.Router.manage(request, response);
@@ -23,7 +23,10 @@ http.createServer(function(request, response) {
 console.log("Server launched on localhost:3000 ...");
 ```
 
-Here, we create a route **/hello**, Smart will look in **./app/controllers/hello.js** and render **./app/views/hello.hbs**
+Here, we create a route **/hello**, Smart will look in **./app/controllers/Hello.js** and render **./app/views/Hello.hbs**
+#### Nested routes
+When you need to register routes like **/posts/new** or something like this, Smart will look for **PostsNew** file.
+
 Notice, we not defined an index route, indeed, this is a common case for all web application so it implicitly add to your current routes, and it will look for the index.hbs template.
 
 Actually, a controller looks like this :
@@ -43,3 +46,6 @@ module.exports = controller;
 The data passed with the **send** method only accept objects. ASAP you will be able to set a custom HTTP code and headers.
 
 If we enter a nonexistent URL, Smart will send a 404 error page (in **./app/views/global/404.hbs**).
+
+
+
