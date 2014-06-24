@@ -24,18 +24,18 @@ console.log("Server launched on localhost:3000 ...");
 ```
 
 Here, we create a route **/hello**, Smart will look in **./app/controllers/hello.js** and render **./app/views/hello.hbs**
+Notice, we not defined an index route, indeed, this is a common case for all web application so it implicitly add to your current routes, and it will look for the index.hbs template.
 
 Actually, a controller looks like this :
-
 ```javascript
 var controller = require('../../lib/smart').Controller;
 
 controller.extend(function(req, res) {
-	var data = {
-		name: "DCK"
-	};
+  var data = {
+    name: "DCK"
+  };
 
-	res.send(data);
+  res.send(data);
 });
 
 module.exports = controller;
