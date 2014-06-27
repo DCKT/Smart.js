@@ -53,5 +53,12 @@ req.query.id; // 1
 
 If you enter a nonexistent URL, Smart will send a 404 error page (in **./app/views/global/404.hbs**).
 
-
+#### URL parameters
+You can register a route by specifing an identifier with a colon like : `/posts/:id`. 
+Then you will find in the controller the variable **req.params** who contained an object, here **req.params.id**.
+```javascript
+// URL registered: http://localhost:3000/posts/:id
+// http://localhost:3000/posts/1
+req.query.id; // 1
+```
 
