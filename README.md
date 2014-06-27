@@ -31,20 +31,17 @@ Notice, we not defined an index route, indeed, this is a common case for all web
 
 Actually, a controller looks like this :
 ```javascript
-module.exports = controller.extend(function(req, res) {
-	var name = req.query.name;
-	var data = {
-		name: name
-	};
+var controller = require('../../lib/smart').Controller;
 
-	res.send(data);
+module.exports = controller.extend(function(req, res) {
+  res.send({id: req.params.id});
 });
+
 ```
 The data passed with the **send** method only accept objects. 
-ASAP you will be able to set a custom HTTP code and headers.
 
 #### GET parameters
-If the URL requested has some parameters, you can use **req.query** followed by the name of the parameters. Ex :
+If the URL requested has some parameters, you can use **req.query** followed by the name of the parameters. Example :
 ```javascript
 // http://localhost:3000?name=DCK&id=1
 req.query.name; // 'DCK'
@@ -59,6 +56,10 @@ Then you will find in the controller the variable **req.params** who contained a
 ```javascript
 // URL registered: http://localhost:3000/posts/:id
 // http://localhost:3000/posts/1
-req.query.id; // 1
+req.params.id; // 1
 ```
 
+## ASAP
+- NPM module
+- Set custom headers and HTTP Code for controller
+- HTTP method for controller (GET / POST / PUT / DELETE)
