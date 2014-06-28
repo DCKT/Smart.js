@@ -8,5 +8,5 @@ arguments = process.argv;
 var smart = require(lib + '/smart-cli.js');
 
 if (arguments[1] === 'new') {
-	smart.new();
+	smart.new(arguments[2]);
 };
