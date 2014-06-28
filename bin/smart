@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+var path  = require('path'),
+fs        = require('fs'),
+lib       = path.join(path.dirname(fs.realpathSync(__filename)), '../lib'),
+arguments = process.argv;
+
+var smart = require(lib + '/smart-cli.js');
+
+if (arguments[1] === 'new') {
+	smart.new();
+};

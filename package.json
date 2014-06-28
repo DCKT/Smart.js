@@ -1,7 +1,7 @@
 {
-	"author": "Thomas Deconinck",
+	"author": "Thomas Deconinck <thomas.deconinck@supinfo.com> (http://thomasdeconinck.fr/)",
 	"name": "Smart.js",
-	"description": "A clever web Framework",
+	"description": "A clever web Framework for Node.js",
 	"version": "0.1.0",
 	"repository": {
     "url": "https://github.com/DCKT/Smart.js"
@@ -10,10 +10,14 @@
   	"handlebars": ">= 1.3.0",
   	"node-sass": "0.9.3"
 	},
+	"bin": {
+    "smart": "./bin/smart"
+  },
 	"devDependencies": {},
   "optionalDependencies": {},
 	"main": "./lib/smart",
 	"keywords": [
+		"http",
 		"web",
 		"router",
 		"framework"
