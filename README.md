@@ -8,8 +8,6 @@ Smart use Handlebars as template engine and can handle SCSS.
 
 
 ## Example
-Actually, this is not a NPM package but it will be soon...
-
 ```javascript
 var http = require('http'),
 Smart    = require('smartjs');
@@ -23,7 +21,7 @@ http.createServer(function(request, response) {
 console.log("Server launched on localhost:3000 ...");
 ```
 
-Here, we create a route **/hello**, Smart will look in **./app/controllers/Hello.js** and render **./app/views/Hello.hbs**
+Here, we create a route **/hello**, Smart will look in **app/controllers/Hello.js** and render **app/views/Hello.hbs**
 If the controller is not found, Smart will handle the case and render the template normaly.
 
 #### Nested routes
