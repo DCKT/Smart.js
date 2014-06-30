@@ -12,7 +12,7 @@ Actually, this is not a NPM package but it will be soon...
 
 ```javascript
 var http = require('http'),
-Smart    = require('./smart');
+Smart    = require('smartjs');
 
 Smart.Router.map("/hello", "/posts/new");
 
@@ -33,7 +33,7 @@ Notice, we don't defined an index route, indeed, this is a common case for all w
 
 Actually, a controller looks like this :
 ```javascript
-var controller = require('../../lib/smart').Controller;
+var controller = require('smartjs').Controller;
 
 module.exports = controller.extend(function(req, res) {
   res.send({id: req.params.id});
@@ -62,7 +62,6 @@ req.params.id; // 1
 ```
 
 ## ASAP
-- NPM module
 - Set custom headers and HTTP Code for controller
 - HTTP method for controller (GET / POST / PUT / DELETE)
 - smart-cli (generate smart project)

@@ -1,6 +1,6 @@
 {
 	"author": "Thomas Deconinck <thomas.deconinck@supinfo.com> (http://thomasdeconinck.fr/)",
-	"name": "Smart.js",
+	"name": "smartjs",
 	"description": "A clever web Framework for Node.js",
 	"version": "0.1.0",
 	"repository": {
