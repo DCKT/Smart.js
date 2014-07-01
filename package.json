@@ -2,7 +2,7 @@
 	"author": "Thomas Deconinck <thomas.deconinck@supinfo.com> (http://thomasdeconinck.fr/)",
 	"name": "smartjs",
 	"description": "A clever web Framework for Node.js",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"repository": {
     "url": "https://github.com/DCKT/Smart.js"
   },
