@@ -6,7 +6,12 @@ lib       = path.join(path.dirname(fs.realpathSync(__filename)), '../lib'),
 arguments = process.argv;
 
 var smart = require(lib + '/smart-cli.js');
+ 
+var a1 = arguments[1];
 
-if (arguments[1] === 'new') {
+if (a1 === 'new') {
 	smart.new(arguments[2]);
-};
+}
+else {
+  
+}
