@@ -1,13 +1,12 @@
 {
 	"author": "Thomas Deconinck <thomas.deconinck@supinfo.com> (http://thomasdeconinck.fr/)",
 	"name": "smartjs",
-	"description": "A clever web Framework for Node.js",
-	"version": "0.2.4",
+	"description": "A clever web Framework without dependencies",
+	"version": "0.3.0",
 	"repository": {
     "url": "https://github.com/DCKT/Smart.js"
   },
 	"dependencies": {
-  	"handlebars": ">= 1.3.0",
   	"node-sass": "0.9.3"
 	},
 	"bin": {
