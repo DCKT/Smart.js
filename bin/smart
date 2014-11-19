@@ -10,3 +10,4 @@ var smart = require(lib + '/smart-cli.js');
 if (arguments[2] === 'new') {
 	smart.new(arguments[3]);
 };
+
