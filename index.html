@@ -3,82 +3,164 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <meta name="viewport" content="width=640">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
 
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
     <title>Smart.js by DCKT</title>
   </head>
 
   <body>
-    <header>
-      <div class="inner">
-        <h1>Smart.js</h1>
-        <h2>A clever lightweight Node.js web framework.</h2>
-        <a href="https://github.com/DCKT/Smart.js" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+    <a id="forkme_banner" href="https://github.com/DCKT/Smart.js">View on GitHub</a>
+    <div class="shell">
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Smart.js</h1>
+            <h2>A clever lightweight Node.js web framework.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/DCKT/Smart.js/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/DCKT/Smart.js/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a id="smartjs" class="anchor" href="#smartjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Smart.js</h1>
+
+<h2>
+<a id="what-is-smartjs-" class="anchor" href="#what-is-smartjs-" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is Smart.js ?</h2>
+
+<p>Smart is a clever lightweight web framework for building web application quickly. He is inspired from the Ember.js conventions, you just need to pass some routes to the application and Smart will search the Controller (if it exists) and the view associated.
+Smart use Handlebars as template engine and can handle SCSS.</p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> http <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>http<span class="pl-pds">'</span></span>),
+Smart    <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>smartjs<span class="pl-pds">'</span></span>);
+
+Smart.Router.map(<span class="pl-s1"><span class="pl-pds">"</span>/hello<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>/posts/new<span class="pl-pds">"</span></span>);
+
+http.createServer(<span class="pl-st">function</span>(<span class="pl-vpf">request</span>, <span class="pl-vpf">response</span>) {
+  Smart.Router.manage(request, response);
+}).listen(<span class="pl-c1">3000</span>);
+
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">"</span>Server launched on localhost:3000 ...<span class="pl-pds">"</span></span>);</pre></div>
+
+<p>Here, we create a route <strong>/hello</strong>, Smart will look in <strong>app/controllers/Hello.js</strong> and render <strong>app/views/Hello.hbs</strong>
+If the controller is not found, Smart will handle the case and render the template normaly.</p>
+
+<h4>
+<a id="nested-routes" class="anchor" href="#nested-routes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nested routes</h4>
+
+<p>When you need to register routes like <strong>/posts/new</strong> or something like this, Smart will look for <strong>PostsNew</strong> file.</p>
+
+<p>Notice, we don't defined an index route, indeed, this is a common case for all web application so it implicitly add to your current routes, and it will look for the index.hbs template.</p>
+
+<p>Actually, a controller looks like this :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> controller <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>smartjs<span class="pl-pds">'</span></span>).Controller;
+
+<span class="pl-sv">module</span>.exports <span class="pl-k">=</span> controller.extend(<span class="pl-st">function</span>(<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>) {
+  res.<span class="pl-s3">send</span>({id<span class="pl-k">:</span> req.params.<span class="pl-sc">id</span>});
+});
+</pre></div>
+
+<p>The data passed with the <strong>send</strong> method only accept objects. </p>
+
+<h4>
+<a id="get-parameters" class="anchor" href="#get-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET parameters</h4>
+
+<p>If the URL requested has some parameters, you can use <strong>req.query</strong> followed by the name of the parameters. Example :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// http://localhost:3000?name=DCK&amp;id=1</span>
+req.query.<span class="pl-sc">name</span>; <span class="pl-c">// 'DCK'</span>
+req.query.<span class="pl-sc">id</span>; <span class="pl-c">// 1</span></pre></div>
+
+<p>If you enter a nonexistent URL, Smart will send a 404 error page (in <strong>./app/views/global/404.hbs</strong>).</p>
+
+<h4>
+<a id="url-parameters" class="anchor" href="#url-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>URL parameters</h4>
+
+<p>You can register a route by specifing an identifier with a colon like : <code>/posts/:id</code>. 
+Then you will find in the controller the variable <strong>req.params</strong> who contained an object, here <strong>req.params.id</strong>.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// URL registered: http://localhost:3000/posts/:id</span>
+<span class="pl-c">// http://localhost:3000/posts/1</span>
+req.params.<span class="pl-sc">id</span>; <span class="pl-c">// 1</span></pre></div>
+
+<h2>
+<a id="asap" class="anchor" href="#asap" aria-hidden="true"><span class="octicon octicon-link"></span></a>ASAP</h2>
+
+<ul>
+<li>Set custom headers and HTTP Code for controller</li>
+<li>HTTP method for controller (GET / POST / PUT / DELETE)</li>
+<li>smart-cli (generate smart project)</li>
+</ul>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a id="licence" class="anchor" href="#licence" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENCE</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>The MIT License (MIT)</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>Copyright (c) 2014 Thomas Deconinck</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+      </section>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/DCKT">DCKT</a> can be found on <a href="https://github.com/DCKT/Smart.js">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/DCKT/Smart.js/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/DCKT/Smart.js/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/DCKT/Smart.js"></a> is maintained by <a href="https://github.com/DCKT">DCKT</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
     </div>
 
-            <script type="text/javascript">
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
