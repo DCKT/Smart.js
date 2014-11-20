@@ -6,9 +6,6 @@
 	"repository": {
     "url": "https://github.com/DCKT/Smart.js"
   },
-	"dependencies": {
-  	"node-sass": "0.9.3"
-	},
 	"bin": {
     "smart": "./bin/smart"
   },
