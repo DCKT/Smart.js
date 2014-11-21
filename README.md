@@ -1,68 +1,67 @@
-Smart.js
-=========
+DOC in construction !
 
-## What is Smart.js ?
+![Smart.js](https://github.com/DCKT/Smart.js/blob/master/doc/logo.png)
 
-Smart is a clever lightweight web framework for building web application quickly. He is inspired from the Ember.js conventions, you just need to pass some routes to the application and Smart will search the Controller (if it exists) and the view associated.
-Smart use Handlebars as template engine and can handle SCSS.
+## A clever Node.js web framework
+
+The main purpose of this framework is **Convention Over Configuration**, it's inspired from Ember.js or Ruby On Rails. It follows the
+MVC design pattern.
+
+**No more dependencies**
+I don't like projects with thousand dependencies, that's why Smart doesn't use another library except the Node.js API.
+All is based on the http module, no express or connect here.
+
+## Structure
+Your application must follow some convention for working correctly. Here is how you should present your folder / files :
+![Structure of an application](https://github.com/DCKT/Smart.js/blob/master/doc/structure.png)
+
+## Concepts
+You can create somes routes, each routes own a controller and a view associated, a route named __hello__ will looking for a hello file in
+the **controllers** folder and hello.html in views folder.
+
+**Index or '/'**
+Because every application have an index page, you must not create an index controller execpt if you realy need to perform some actions.
 
 
-## Example
+### Setup
+`npm install -g smartjs`
+
+With this package come a command line named `smart`.
+
+Here is a basic server configuration :
 ```javascript
 var http = require('http'),
 Smart    = require('smartjs');
 
-Smart.Router.map("/hello", "/posts/new");
+Smart.Router.map("/hello");
 
-http.createServer(function(request, response) {
-  Smart.Router.manage(request, response);
+http.createServer(function(req, res) {
+  Smart.Router.manage(req, res);
 }).listen(3000);
 
 console.log("Server launched on localhost:3000 ...");
 ```
 
-Here, we create a route **/hello**, Smart will look in **app/controllers/Hello.js** and render **app/views/Hello.hbs**
-If the controller is not found, Smart will handle the case and render the template normaly.
+#### Command line API
 
-#### Nested routes
-When you need to register routes like **/posts/new** or something like this, Smart will look for **PostsNew** file.
+`smart new **[name]**`
+Generate an empty project with an index.html and server.js files.
 
-Notice, we don't defined an index route, indeed, this is a common case for all web application so it implicitly add to your current routes, and it will look for the index.hbs template.
 
-Actually, a controller looks like this :
-```javascript
-var controller = require('smartjs').Controller;
+#### General API
 
-module.exports = controller.extend(function(req, res) {
-  res.send({id: req.params.id});
-});
+**Smart.Router**
+Router is an object who will register and manage your routes.
 
-```
-The data passed with the **send** method only accept objects. 
+  **Router.map([string list])**
+  You will pass here all of your routes. You can create nested routes like /posts/new, the controller will be named **PostsNew**
 
-#### GET parameters
-If the URL requested has some parameters, you can use **req.query** followed by the name of the parameters. Example :
-```javascript
-// http://localhost:3000?name=DCK&id=1
-req.query.name; // 'DCK'
-req.query.id; // 1
-```
+  **Router.manage(request, response)**
+  This method will use the request and response object given by the http module.
 
-If you enter a nonexistent URL, Smart will send a 404 error page (in **./app/views/global/404.hbs**).
+**Smart.Controller**
+Controller is an object who will be used to deserved your data to your view.
 
-#### URL parameters
-You can register a route by specifing an identifier with a colon like : `/posts/:id`. 
-Then you will find in the controller the variable **req.params** who contained an object, here **req.params.id**.
-```javascript
-// URL registered: http://localhost:3000/posts/:id
-// http://localhost:3000/posts/1
-req.params.id; // 1
-```
-
-## ASAP
-- Set custom headers and HTTP Code for controller
-- HTTP method for controller (GET / POST / PUT / DELETE)
-- smart-cli (generate smart project)
 
 ### LICENCE
 The MIT License (MIT)
