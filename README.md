@@ -1,7 +1,7 @@
 DOC in construction !
 
 ![Smart.js](https://github.com/DCKT/Smart.js/blob/master/doc/logo.png)
-
+[![Build Status](https://travis-ci.org/DCKT/Smart.js.svg)](https://travis-ci.org/DCKT/Smart.js)
 ## A clever Node.js web framework
 
 The main purpose of this framework is **Convention Over Configuration**, it's inspired from Ember.js or Ruby On Rails. It follows the
