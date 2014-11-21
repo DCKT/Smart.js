@@ -1,6 +1,6 @@
 DOC in construction !
 
-![Smart.js](https://github.com/DCKT/Smart.js/blob/master/doc/logo.png)
+![Smart.js](https://raw.githubusercontent.com/DCKT/Smart.js/master/doc/logo.png)
 
 ## A clever Node.js web framework
 
@@ -13,7 +13,7 @@ All is based on the http module, no express or connect here.
 
 ## Structure
 Your application must follow some convention for working correctly. Here is how you should present your folder / files :
-![Structure of an application](https://github.com/DCKT/Smart.js/blob/master/doc/structure.png)
+![Structure of an application](https://raw.githubusercontent.com/DCKT/Smart.js/master/doc/structure.png)
 
 ## Concepts
 You can create somes routes, each routes own a controller and a view associated, a route named __hello__ will looking for a hello file in
@@ -60,8 +60,40 @@ Router is an object who will register and manage your routes.
   This method will use the request and response object given by the http module.
 
 **Smart.Controller**
-Controller is an object who will be used to deserved your data to your view.
 
+Controller is an object who will be used to deserved your data to your view. The idea is to extend the controller for adding
+your logic. It looks like there :
+
+```javascript
+var controller = require('smartjs').Controller;
+
+module.exports = controller.extend(function(req, res) {
+  var data = getSomeData();
+  res.send({
+    data: data
+  });
+});
+```
+
+The data are passed through the controller and will be send to the view if you use a template engine.
+
+#### Template engine
+
+By default, there is no template engine. Actually Smart support these one :
+
+- Handlebars
+- Jade
+
+For using them, you have to use the `Smart.use` function.
+This function needs an object as argument, and at the moment just look for a **template** attribute. Here is an exemple :
+
+```javascript
+Smart.use({
+  template: 'jade'
+});
+```
+
+Next, don't forget to change your views extension !
 
 ### LICENCE
 The MIT License (MIT)
