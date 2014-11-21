@@ -43,24 +43,27 @@ http.createServer(function(req, res) {
 console.log("Server launched on localhost:3000 ...");
 ```
 
-#### Command line API
+### Command line API
 
 `smart new **[name]**`
+
 Generate an empty project with an index.html and server.js files.
 
 
-#### General API
+### General API
 
 **Smart.Router**
 Router is an object who will register and manage your routes.
 
   **Router.map([string list])**
+  
   You will pass here all of your routes. You can create nested routes like /posts/new, the controller will be named **PostsNew**
 
   **Router.manage(request, response)**
   This method will use the request and response object given by the http module.
 
 **Smart.Controller**
+
 Controller is an object who will be used to deserved your data to your view.
 
 
