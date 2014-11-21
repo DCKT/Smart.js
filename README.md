@@ -14,12 +14,8 @@ All is based on the http module, no express or connect here.
 
 ## Structure
 Your application must follow some convention for working correctly. Here is how you should present your folder / files :
-<<<<<<< HEAD
-![Structure of an application](https://raw.githubusercontent.com/DCKT/Smart.js/master/doc/structure.png)
-=======
 
-![Structure of an application](https://github.com/DCKT/Smart.js/blob/master/doc/structure.png)
->>>>>>> 574700b99d389c0d5db038d6610088227ce969b4
+![Structure of an application](https://raw.githubusercontent.com/DCKT/Smart.js/master/doc/structure.png)
 
 ## Concepts
 You can create somes routes, each routes own a controller and a view associated, a route named __hello__ will looking for a hello file in
@@ -61,7 +57,7 @@ Generate a project with all folders needed, an index.html and server.js files.
 Router is an object who will register and manage your routes.
 
 &nbsp;&nbsp;&nbsp;&nbsp;**Router.map([string list])**
-  
+
 &nbsp;&nbsp;&nbsp;&nbsp;You will pass here all of your routes. You can create nested routes like /posts/new, the controller will be named **PostsNew**
 
 &nbsp;&nbsp;&nbsp;&nbsp;**Router.manage(request, response)**
@@ -69,11 +65,6 @@ Router is an object who will register and manage your routes.
 &nbsp;&nbsp;&nbsp;&nbsp;This method will use the request and response object given by the http module.
 
 **Smart.Controller**
-<<<<<<< HEAD
-=======
-
-Controller is an object who will be used to deserved your data to your view.
->>>>>>> 574700b99d389c0d5db038d6610088227ce969b4
 
 Controller is an object who will be used to deserved your data to your view. The idea is to extend the controller for adding
 your logic. It looks like there :
