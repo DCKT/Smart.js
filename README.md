@@ -45,9 +45,9 @@ console.log("Server launched on localhost:3000 ...");
 
 ### Command line API
 
-`smart new **[name]**`
+**smart new [projectName]**
 
-Generate an empty project with an index.html and server.js files.
+Generate a project with all folders needed, an index.html and server.js files.
 
 
 ### General API
