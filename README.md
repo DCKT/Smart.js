@@ -1,6 +1,7 @@
 DOC in construction !
 
 ![Smart.js](https://github.com/DCKT/Smart.js/blob/master/doc/logo.png)
+
 [![Build Status](https://travis-ci.org/DCKT/Smart.js.svg)](https://travis-ci.org/DCKT/Smart.js)
 ## A clever Node.js web framework
 
