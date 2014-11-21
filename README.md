@@ -55,12 +55,13 @@ Generate an empty project with an index.html and server.js files.
 **Smart.Router**
 Router is an object who will register and manage your routes.
 
-  **Router.map([string list])**
+&nbsp;&nbsp;&nbsp;&nbsp;**Router.map([string list])**
   
-  You will pass here all of your routes. You can create nested routes like /posts/new, the controller will be named **PostsNew**
+&nbsp;&nbsp;&nbsp;&nbsp;You will pass here all of your routes. You can create nested routes like /posts/new, the controller will be named **PostsNew**
 
-  **Router.manage(request, response)**
-  This method will use the request and response object given by the http module.
+&nbsp;&nbsp;&nbsp;&nbsp;**Router.manage(request, response)**
+
+&nbsp;&nbsp;&nbsp;&nbsp;This method will use the request and response object given by the http module.
 
 **Smart.Controller**
 
