@@ -13,6 +13,7 @@ All is based on the http module, no express or connect here.
 
 ## Structure
 Your application must follow some convention for working correctly. Here is how you should present your folder / files :
+
 ![Structure of an application](https://github.com/DCKT/Smart.js/blob/master/doc/structure.png)
 
 ## Concepts
