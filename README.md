@@ -30,7 +30,7 @@ Because every application have an index page, you must not create an index contr
 
 With this package come a command line named `smart`.
 
-Here is a basic server configuration :
+### Usage
 ```javascript
 var http = require('http'),
 Smart    = require('smartjs');
