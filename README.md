@@ -44,14 +44,14 @@ http.createServer(function(req, res) {
 console.log("Server launched on localhost:3000 ...");
 ```
 
-### Command line API
+## Command line API
 
 **smart new [projectName]**
 
 Generate a project with all folders needed, an index.html and server.js files.
 
 
-### General API
+## General API
 
 **Smart.Router**
 Router is an object who will register and manage your routes.
