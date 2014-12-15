@@ -1,4 +1,4 @@
-DOC in construction !
+Documentation in construction.
 
 ![Smart.js](https://raw.githubusercontent.com/DCKT/Smart.js/master/doc/logo.png)
 
