@@ -26,14 +26,14 @@ Because every application have an index page, you must not create an index contr
 
 
 ### Setup
-`npm install -g smartjs`
+`npm install -g smart`
 
 With this package come a command line named `smart`.
 
 ### Usage
 ```javascript
 var http = require('http'),
-Smart    = require('smartjs');
+Smart    = require('smart');
 
 Smart.Router.map("/hello");
 
@@ -70,7 +70,7 @@ Controller is an object who will be used to deserved your data to your view. The
 your logic. It looks like there :
 
 ```javascript
-var controller = require('smartjs').Controller;
+var controller = require('smart').Controller;
 
 module.exports = controller.extend(function(req, res) {
   var data = getSomeData();
